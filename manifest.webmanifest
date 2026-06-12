@@ -1,0 +1,25 @@
+{
+  "name": "Match Myocyte",
+  "short_name": "Myocyte",
+  "description": "A dramatic mobile match-3 mini-game about cardiac regeneration.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#020830",
+  "theme_color": "#07145f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

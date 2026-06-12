@@ -1,0 +1,229 @@
+:root {
+  color-scheme: dark;
+  --ink: #ffffff;
+  --deep: #051254;
+  --panel: rgba(5, 18, 84, 0.72);
+  --cyan: #58d7ff;
+  --gold: #ffd844;
+  --pink: #ff477f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #020830;
+  color: var(--ink);
+  font-family: "Trebuchet MS", "Avenir Next", system-ui, sans-serif;
+  touch-action: none;
+  user-select: none;
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+button {
+  font: inherit;
+}
+
+.phone-stage {
+  position: relative;
+  width: min(100vw, 520px);
+  height: 100svh;
+  max-height: 1000px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, #203dd1 0%, #07145f 50%, #020830 100%);
+  box-shadow: 0 0 60px rgba(88, 215, 255, 0.35);
+}
+
+#gameCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.splash {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.025);
+  transition: opacity 320ms ease, transform 520ms ease;
+  background: #020830;
+  z-index: 4;
+}
+
+.splash.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.splash img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tap-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+}
+
+.tap-layer:focus-visible {
+  outline: 4px solid var(--gold);
+  outline-offset: -14px;
+}
+
+.top-actions {
+  position: absolute;
+  top: max(10px, env(safe-area-inset-top));
+  right: 10px;
+  z-index: 3;
+}
+
+.icon-button,
+.primary-button {
+  border: 3px solid rgba(255, 255, 255, 0.82);
+  border-radius: 8px;
+  color: #ffffff;
+  background: linear-gradient(180deg, #ffdf45 0%, #ff9419 52%, #dd5510 100%);
+  box-shadow: 0 6px 0 #9f2d09, 0 0 18px rgba(255, 216, 68, 0.48);
+  text-shadow: 0 2px 0 rgba(123, 27, 10, 0.8);
+  cursor: pointer;
+}
+
+.icon-button {
+  width: 66px;
+  min-height: 38px;
+  padding: 7px 10px;
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.icon-button:active,
+.primary-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 #9f2d09, 0 0 18px rgba(255, 216, 68, 0.48);
+}
+
+.result {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  opacity: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 240, 102, 0.32), transparent 38%),
+    rgba(1, 7, 48, 0.68);
+  backdrop-filter: blur(5px);
+  transition: opacity 220ms ease;
+  z-index: 5;
+}
+
+.result.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.result-card {
+  width: min(100%, 390px);
+  padding: 24px;
+  border: 4px solid rgba(255, 255, 255, 0.92);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(10, 36, 153, 0.96), rgba(4, 12, 74, 0.98)),
+    var(--panel);
+  box-shadow: 0 0 28px rgba(88, 215, 255, 0.72), 0 18px 44px rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--gold);
+  font-size: 0.83rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.result h1 {
+  margin: 0;
+  font-size: clamp(2rem, 11vw, 3.1rem);
+  line-height: 0.95;
+  color: #ffffff;
+  text-shadow: 0 4px 0 #07145f, 0 0 16px rgba(255, 71, 127, 0.68);
+}
+
+.result p {
+  margin: 12px 0 18px;
+  line-height: 1.35;
+}
+
+.result-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.result-stats span {
+  padding: 9px 8px;
+  border: 2px solid rgba(88, 215, 255, 0.8);
+  border-radius: 8px;
+  background: rgba(3, 16, 86, 0.82);
+  color: #bcecff;
+}
+
+.result-stats strong {
+  display: block;
+  color: #ffffff;
+  font-size: 1.3rem;
+}
+
+.noscript {
+  position: fixed;
+  inset: auto 12px 12px;
+  z-index: 10;
+  margin: 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #07145f;
+  font-weight: 700;
+}
+
+@media (min-width: 700px) {
+  .phone-stage {
+    height: min(100svh, 940px);
+    border-radius: 8px;
+  }
+}

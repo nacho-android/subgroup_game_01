@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#07145f">
+    <meta name="description" content="Match Myocyte, a mobile browser match-3 mini-game for cardiac regeneration science fans.">
+    <title>Match Myocyte</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="preload" href="assets/title.png" as="image">
+    <link rel="preload" href="assets/lab-background.png" as="image">
+    <link rel="preload" href="assets/sprites.png" as="image">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="phone-stage" aria-label="Match Myocyte game">
+      <canvas id="gameCanvas" aria-label="Match Myocyte puzzle board"></canvas>
+
+      <section id="splash" class="splash is-active" aria-label="Title screen">
+        <img src="assets/title.png" alt="Match Myocyte title screen with a tap to start button">
+        <button id="startButton" class="tap-layer" type="button">Tap to Start</button>
+      </section>
+
+      <section id="result" class="result" aria-live="polite" aria-hidden="true">
+        <div class="result-card">
+          <p class="eyebrow" id="resultEyebrow">Lab Meeting Saved</p>
+          <h1 id="resultTitle">Regeneration Complete</h1>
+          <p id="resultCopy">The myocytes are thriving and the seminar room is applauding.</p>
+          <div class="result-stats">
+            <span><strong id="finalScore">0</strong> score</span>
+            <span><strong id="finalStreak">0</strong>x streak</span>
+          </div>
+          <button id="restartButton" class="primary-button" type="button">Play Again</button>
+        </div>
+      </section>
+
+      <div class="top-actions" aria-label="Game controls">
+        <button id="soundButton" class="icon-button" type="button" aria-label="Toggle sound">Sound On</button>
+      </div>
+    </main>
+
+    <noscript>
+      <p class="noscript">Match Myocyte needs JavaScript enabled to play.</p>
+    </noscript>
+
+    <script src="src/game.js" defer></script>
+  </body>
+</html>
